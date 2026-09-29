@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'; img-src 'self' data:;" />
+  <title>本地记账本</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <svg class="sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <symbol id="i-coffee" viewBox="0 0 24 24"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" y1="2.5" x2="6" y2="4.5"/><line x1="10" y1="2.5" x2="10" y2="4.5"/><line x1="14" y1="2.5" x2="14" y2="4.5"/></symbol>
+      <symbol id="i-car" viewBox="0 0 24 24"><path d="M5 15l1.5-4.3A2 2 0 0 1 8.4 9h7.2a2 2 0 0 1 1.9 1.7L19 15"/><path d="M3 15h18"/><circle cx="7" cy="17.5" r="2"/><circle cx="17" cy="17.5" r="2"/></symbol>
+      <symbol id="i-bag" viewBox="0 0 24 24"><path d="M6 8h12l-1 12a2 2 0 0 1-2 1.8H9A2 2 0 0 1 7 20Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></symbol>
+      <symbol id="i-home" viewBox="0 0 24 24"><path d="m3 11 9-7 9 7"/><path d="M5 9.5V20a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9.5"/><path d="M10 21v-6h4v6"/></symbol>
+      <symbol id="i-ticket" viewBox="0 0 24 24"><path d="M3 9V7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v2a3 3 0 0 0 0 6v2a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-2a3 3 0 0 0 0-6Z"/><path d="M13 5v2M13 11v2M13 17v2"/></symbol>
+      <symbol id="i-med" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+      <symbol id="i-cap" viewBox="0 0 24 24"><path d="m12 4-10 5 10 5 10-5Z"/><path d="M6.5 11.5V16c0 1.2 2.5 2.8 5.5 2.8s5.5-1.6 5.5-2.8v-4.5"/><path d="M22 9v5"/></symbol>
+      <symbol id="i-gift" viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10" rx="1"/><path d="M3 7h18v4H3z"/><path d="M12 7v14"/><path d="M12 7c-1.8-3-6-2.4-6-1.2 0 .9 1.4 1.2 2.6.9 2.2-.5 3-1.5 3.4-2.4"/><path d="M12 7c1.8-3 6-2.4 6-1.2 0 .9-1.4 1.2-2.6.9-2.2-.5-3-1.5-3.4-2.4"/></symbol>
+      <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 3h4l2 5-2.5 1.5a12 12 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2Z"/></symbol>
+      <symbol id="i-laptop" viewBox="0 0 24 24"><path d="M4 6h16a1 1 0 0 1 1 1v9H3V7a1 1 0 0 1 1-1Z"/><path d="M2 19h20"/></symbol>
+      <symbol id="i-paw" viewBox="0 0 24 24"><circle cx="7" cy="10.5" r="2"/><circle cx="12" cy="7.5" r="2"/><circle cx="17" cy="10.5" r="2"/><path d="M12 14.5c-4 0-6.5 1.8-6.5 4.2 0 1.4 1.1 2.3 2.6 2.3 1.2 0 2-.5 3.9-.5s2.7.5 3.9.5c1.5 0 2.6-.9 2.6-2.3 0-2.4-2.5-4.2-6.5-4.2Z"/></symbol>
+      <symbol id="i-plane" viewBox="0 0 24 24"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2Z"/></symbol>
+      <symbol id="i-dumbbell" viewBox="0 0 24 24"><rect x="4" y="8.5" width="4" height="7" rx="1"/><rect x="16" y="8.5" width="4" height="7" rx="1"/><path d="M8 10.5h8M8 13.5h8"/><path d="M2 10v4M22 10v4"/></symbol>
+      <symbol id="i-box" viewBox="0 0 24 24"><path d="m21 8-9-5-9 5v8l9 5 9-5Z"/><path d="m3 8 9 5 9-5"/><path d="M12 13v8"/></symbol>
+      <symbol id="i-dots" viewBox="0 0 24 24"><circle cx="6" cy="12" r="1.4" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.4" fill="currentColor" stroke="none"/><circle cx="18" cy="12" r="1.4" fill="currentColor" stroke="none"/></symbol>
+      <symbol id="i-banknote" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="10" rx="1.5"/><circle cx="12" cy="12" r="2.5"/><path d="M6.2 9.5h.01M17.8 14.5h.01"/></symbol>
+      <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3 2.8 5.6 6.2.9-4.5 4.4 1.1 6.1L12 17.1 6.4 20l1.1-6.1L3 9.5l6.2-.9Z"/></symbol>
+      <symbol id="i-trend" viewBox="0 0 24 24"><path d="m3 17 6-6 4 4 8-8"/><path d="M14 7h7v7"/></symbol>
+      <symbol id="i-briefcase" viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="12" rx="2"/><path d="M9 8V6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/><path d="M3 13h18"/></symbol>
+      <symbol id="i-envelope" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="m3 8 9 6 9-6"/></symbol>
+      <symbol id="i-refund" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 2.6-6.4L3 8"/><path d="M3 3v5h5"/></symbol>
+      <symbol id="i-cash" viewBox="0 0 24 24"><path d="M3 8a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/><path d="M16.5 12h.01"/><path d="M18 8.5v7"/></symbol>
+      <symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-8 8c-1.4 0-2.8-.4-4-1l-5 1.5L6.5 17A8 8 0 1 1 21 12Z"/><circle cx="9" cy="12" r="0.9" fill="currentColor" stroke="none"/><circle cx="14" cy="12" r="0.9" fill="currentColor" stroke="none"/></symbol>
+      <symbol id="i-wallet" viewBox="0 0 24 24"><path d="M3 7.5A2.5 2.5 0 0 1 5.5 5h11A2.5 2.5 0 0 1 19 7.5v.5H6a2 2 0 0 0-2 2V19a2 2 0 0 0 2 2h13a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2"/><path d="M16 13.5h.01"/></symbol>
+      <symbol id="i-card" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/><path d="M7 15h4"/></symbol>
+      <symbol id="i-credit" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/><path d="M6 14h4v2H6z"/></symbol>
+      <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></symbol>
+      <symbol id="i-list" viewBox="0 0 24 24"><path d="M9 6h12M9 12h12M9 18h12"/><circle cx="4.5" cy="6" r="0.9" fill="currentColor" stroke="none"/><circle cx="4.5" cy="12" r="0.9" fill="currentColor" stroke="none"/><circle cx="4.5" cy="18" r="0.9" fill="currentColor" stroke="none"/></symbol>
+      <symbol id="i-chart" viewBox="0 0 24 24"><path d="M5 20V12M12 20V5M19 20V9"/></symbol>
+      <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3.5"/><circle cx="12" cy="12" r="0.7" fill="currentColor"/></symbol>
+      <symbol id="i-tags" viewBox="0 0 24 24"><path d="m4 12 7-7h9v9l-7 7a2 2 0 0 1-2.8 0l-6.2-6.2A2 2 0 0 1 4 12Z"/><circle cx="15.5" cy="8.5" r="1.4"/></symbol>
+      <symbol id="i-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.8v2.4M12 18.8v2.4M21.2 12h-2.4M5.2 12H2.8M18.5 5.5l-1.7 1.7M7.2 16.8l-1.7 1.7M18.5 18.5l-1.7-1.7M7.2 7.2 5.5 5.5"/></symbol>
+      <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+      <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z"/></symbol>
+      <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5 5l1.4 1.4M17.6 17.6 19 19M19 5l-1.4 1.4M6.4 17.6 5 19"/></symbol>
+      <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5"/><path d="M4 20h16"/></symbol>
+      <symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 21V9M7 14l5-5 5 5"/><path d="M4 4h16"/></symbol>
+      <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13a2 2 0 0 0 2 1.8h6a2 2 0 0 0 2-1.8l1-13"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/></symbol>
+      <symbol id="i-edit" viewBox="0 0 24 24"><path d="M4 20h4L19.5 8.5a2.1 2.1 0 0 0-3-3L5 17Z"/><path d="M13.5 6.5l3 3"/></symbol>
+      <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+      <symbol id="i-left" viewBox="0 0 24 24"><path d="m14.5 5.5-6.5 6.5 6.5 6.5"/></symbol>
+      <symbol id="i-right" viewBox="0 0 24 24"><path d="m9.5 5.5 6.5 6.5-6.5 6.5"/></symbol>
+      <symbol id="i-back" viewBox="0 0 24 24"><path d="M20 12H5M11 6l-6 6 6 6"/></symbol>
+      <symbol id="i-swap" viewBox="0 0 24 24"><path d="M4 8h13l-3-3M20 16H7l3 3"/></symbol>
+      <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.5-4.5"/></symbol>
+      <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="16" rx="2"/><path d="M3.5 10h17M8 2.5V6M16 2.5V6"/></symbol>
+      <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 3 2.5 20h19Z"/><path d="M12 9.5v5M12 17.8h.01"/></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+      <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></symbol>
+      <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 11v5M12 7.8h.01"/></symbol>
+      <symbol id="i-yuan" viewBox="0 0 24 24"><path d="M7 4 12 12 17 4"/><path d="M12 12v9"/><path d="M4 7h16M4 12h16"/></symbol>
+    </defs>
+  </svg>
+
+  <div id="app" class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-logo">¥</div>
+        <div class="brand-text">
+          <div class="brand-name">本地记账本</div>
+          <div class="brand-sub">数据只保存在这台电脑</div>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <button class="nav-item active" data-view="school"><span class="nav-ic">&#8203;</span><span>学校</span></button>
+        <button class="nav-item" data-view="dashboard"><span class="nav-ic">&#8203;</span><span>总览</span></button>
+        <button class="nav-item" data-view="transactions"><span class="nav-ic">&#8203;</span><span>明细</span></button>
+        <button class="nav-item" data-view="stats"><span class="nav-ic">&#8203;</span><span>统计</span></button>
+        <button class="nav-item" data-view="budget"><span class="nav-ic">&#8203;</span><span>预算</span></button>
+        <button class="nav-item" data-view="accounts"><span class="nav-ic">&#8203;</span><span>账户</span></button>
+        <button class="nav-item" data-view="categories"><span class="nav-ic">&#8203;</span><span>分类</span></button>
+        <button class="nav-item" data-view="settings"><span class="nav-ic">&#8203;</span><span>设置</span></button>
+      </nav>
+
+      <div class="side-bottom">
+        <button id="btn-quick-add" class="btn-primary btn-block">＋&nbsp;记一笔</button>
+        <div class="side-foot">v1.0.3 · 完全离线</div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div class="topbar-title">
+          <h1 id="view-title">总览</h1>
+          <p id="view-sub"></p>
+        </div>
+        <div class="top-actions">
+          <div class="month-picker">
+            <button id="month-prev" class="icon-btn" title="上个月">&#8203;</button>
+            <button id="month-cur" class="month-cur">2026年9月</button>
+            <button id="month-next" class="icon-btn" title="下个月">&#8203;</button>
+          </div>
+          <button id="btn-theme" class="icon-btn" title="切换深浅色">&#8203;</button>
+          <button id="btn-backup" class="icon-btn" title="导出备份">&#8203;</button>
+        </div>
+      </header>
+
+      <section id="view-root" class="view-root"></section>
+    </main>
+  </div>
+
+  <div id="modal-root"></div>
+  <div id="toast-root"></div>
+  <input type="file" id="file-input" accept=".json,application/json" hidden />
+
+  <script src="app.js"></script>
+</body>
+</html>
